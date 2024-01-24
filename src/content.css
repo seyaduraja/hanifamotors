@@ -1,0 +1,12 @@
+.contentimage{
+    width: 500px;
+    height: 550px;
+    margin: 30px;
+    border-radius: 10px;
+}
+
+.maincontent{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
