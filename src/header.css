@@ -13,12 +13,13 @@
     background-color: black;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
-.headername{
-    color: #fff;
-    padding: 5px;
-
+.logoimg{
+  margin-bottom: 120px ;
+  height: 200px;
+  width: 200px;
 }
 
 .custom-shape-divider-bottom-1706203905 {

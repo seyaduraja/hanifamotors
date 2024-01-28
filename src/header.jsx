@@ -1,7 +1,10 @@
+import logo from "./assets/logo.jpeg"
+
+
 function Header() {
     return(
       <div className="header">
-        <h1 className="headername">HanifaMotors</h1>
+        <img className="logoimg" src= {logo} alt="" />
       
       <div class="custom-shape-divider-bottom-1706203905">
           <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
