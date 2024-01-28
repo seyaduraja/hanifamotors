@@ -11,7 +11,9 @@ function Content() {
         <div>
         <img className= 'contentimage' src={mainimage} alt="" />
         </div>
+       
       </div>
+     
       
     )
 
