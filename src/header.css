@@ -6,38 +6,32 @@
    
 }
 
+
+
 .header{
     width: 100%;
-    height: 300px;
-    position: relative;
-    background-color: black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: 200px;
+   
 }
 
-.logoimg{
-  margin-bottom: 120px ;
-  height: 200px;
-  width: 200px;
-}
 
-.custom-shape-divider-bottom-1706203905 {
+
+.custom-shape-divider-top-1707325309 {
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
     width: 100%;
     overflow: hidden;
     line-height: 0;
 }
 
-.custom-shape-divider-bottom-1706203905 svg {
+.custom-shape-divider-top-1707325309 svg {
     position: relative;
     display: block;
-    width: calc(103% + 1.3px);
-    height: 146px;
+    width: calc(100% + 1.3px);
+    height: 169px;
 }
 
-.custom-shape-divider-bottom-1706203905 .shape-fill {
-    fill: #FFFFFF;
+.custom-shape-divider-top-1707325309 .shape-fill {
+    fill: #F5A623;
 }
