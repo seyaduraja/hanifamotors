@@ -9,6 +9,11 @@
     color: #F5A623;
 }
 
+.companyname{
+    color: #F5A623;
+    font-size: 80px;
+    font-family: "caveat";
+}
 
 .signupdiv{
     display: flex;
@@ -16,19 +21,19 @@
     justify-content: center;
     align-items: center;
     height: 480px;
-    width: 450px;
+    width: 400px;
     /* border-style: solid;
     border-radius: 10px;
     border-color: #F5A623;
     border-width: 0.1px; */
     border-radius: 10px;
-    /* box-shadow: 30px 30px 20px rgba(0,0,0,0.09); */
+    box-shadow: 0px 2px 4px 0px grey , 0px 2px 8px 0px grey;
 }
 
 
 
 .signuptext{
-   color: #F5A623;
+   color: black;
 }
 
 
@@ -41,8 +46,9 @@
 }
 
 .submitspace{
-    height: 30px;
-    width: 150px;
+    height: 40px;
+    width: 330px;
+    margin: 10px;
     font-size: 20px;
     border-radius: 20px;
     border: none;
