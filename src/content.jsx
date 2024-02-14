@@ -1,7 +1,28 @@
+import { useState } from "react"
 import mainimage from "./assets/mainimage.png"
-
+import {createUserWithEmailAndPassword,signInWithPopup} from "firebase/auth"
+import {auth} from "./configuration/firebase.jsx"
+import GoogleButton from 'react-google-button'
+import { googleProvider } from "./configuration/firebase.jsx"
 
 function Content() {
+  const [email,setEmail] = useState('');
+  const [Password,setPassword] = useState('');
+  console.log(auth?.currentUser?.email)
+
+  const signIn = async() => {
+          await createUserWithEmailAndPassword(auth,email,Password)
+
+         };
+
+  const signInWithGoogle = async() => {
+          await signInWithPopup(auth,googleProvider)
+
+
+  };
+
+         
+
     return(
       <div className="maincontent">
         <div className="contentleft">
@@ -12,9 +33,11 @@ function Content() {
         
         <div className="signupdiv">
           <h1 className="signuptext">Signup/Login</h1>
-          <input type="text" className="signinput" placeholder="  Email Id" />
-          <input type="text" className="signinput" placeholder="  Password"/>
-          <button className="submitspace">Submit</button>
+          <input type="text" className="signinput" placeholder="  Email Id" onChange={(e) => setEmail(e.target.value)}/>
+          <input type="password" className="signinput" placeholder="  Password" onChange={(e) => setPassword(e.target.value)} />
+          <button onClick={signIn} className="submitspace">Submit</button>
+          <GoogleButton onClick={signInWithGoogle} type="light"  />
+          
           
           
 
@@ -24,7 +47,7 @@ function Content() {
       </div>
      
       
-    )
+    );
 
 }
 
