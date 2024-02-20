@@ -4,6 +4,8 @@ import {createUserWithEmailAndPassword,signInWithPopup} from "firebase/auth"
 import {auth} from "./configuration/firebase.jsx"
 import GoogleButton from 'react-google-button'
 import { googleProvider } from "./configuration/firebase.jsx"
+import {collection,addDoc,getDocs} from "firebase/firestore"
+import {db} from "./configuration/firebase.jsx"
 
 function Content() {
   const [email,setEmail] = useState('');
@@ -11,9 +13,15 @@ function Content() {
   console.log(auth?.currentUser?.email)
 
   const signIn = async() => {
-          await createUserWithEmailAndPassword(auth,email,Password)
+         const userCredential =  await createUserWithEmailAndPassword(auth,email,Password)
+    
+         const data = await addDoc(collection(db,"users"),{
+          email : email,
+          userId : userCredential.user.uid
+         })
+         }
 
-         };
+        
 
   const signInWithGoogle = async() => {
           await signInWithPopup(auth,googleProvider)
@@ -49,6 +57,6 @@ function Content() {
       
     );
 
-}
+    };
 
 export default Content
