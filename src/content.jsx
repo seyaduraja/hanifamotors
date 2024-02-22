@@ -1,25 +1,35 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import mainimage from "./assets/mainimage.png"
 import {createUserWithEmailAndPassword,signInWithPopup} from "firebase/auth"
 import {auth} from "./configuration/firebase.jsx"
+import { onAuthStateChanged } from "firebase/auth"
 import GoogleButton from 'react-google-button'
 import { googleProvider } from "./configuration/firebase.jsx"
-import {collection,addDoc,getDocs} from "firebase/firestore"
-import {db} from "./configuration/firebase.jsx"
+import {collection,addDoc,getDocs, setDoc,doc} from "firebase/firestore"
+import {db} from "./configuration/firebase.jsx"                                             
+
+
+
 
 function Content() {
   const [email,setEmail] = useState('');
   const [Password,setPassword] = useState('');
-  console.log(auth?.currentUser?.email)
+  
 
+  
+ 
   const signIn = async() => {
-         const userCredential =  await createUserWithEmailAndPassword(auth,email,Password)
+  
+         const userCredential =  await createUserWithEmailAndPassword(auth,email,Password);
     
-         const data = await addDoc(collection(db,"users"),{
-          email : email,
-          userId : userCredential.user.uid
-         })
-         }
+         const users =  collection(db,"users")
+         await setDoc(doc(db,"users",userCredential.user.uid,),{
+          email: email,
+          userId: userCredential.user.uid,
+        } );
+
+        };
+        
 
         
 
@@ -56,7 +66,11 @@ function Content() {
      
       
     );
+  
 
     };
 
 export default Content
+
+
+

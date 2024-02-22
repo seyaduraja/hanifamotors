@@ -1,32 +1,50 @@
 import "./bookingbox.css"
+import {auth} from "../configuration/firebase.jsx"
 import {db} from "../configuration/firebase.jsx"
 import {collection , addDoc} from "firebase/firestore"
-import { useState } from "react";
+import { useState , useEffect } from "react";
+
+
+
 
 function Bookingbox() {
     const [bikename , setbikename] = useState('');
     const [bikemodel, setbikemodel] = useState('');
     const [need,setneed] = useState('');
     const [spare,setspare] = useState('');
+    const [user,setuser] = useState('');
 
-    const placeorder = async() => {
-        const usersCollectionRef = collection(db, "users"); //gets the root collection
-        const {idUser} = await addDoc(usersCollectionRef, {}); // Creates a new document in the root collection
-    
-        const usersSubCollectionGeneralRef = collection(db,`users/${idUser}/general`); //Creates a sub collection in the just created document
-    
-        const {idGeneral} = await addDoc(usersSubCollectionGeneralRef, { dataGeneral }); 
+    useEffect(() => {
+        auth.onAuthStateChanged((data) => {
+            console.log(data)
+            setuser(data) 
 
+        })
 
-    }
-
-
+    },[])
 
 
    
+    
+   
 
+    const placeorder = async() => {
+        const generalref =  collection(db,`users/${user.uid}/order`)
+        await addDoc(generalref,{
+           
+                bikename : bikename,
+                bikemodel: bikemodel,
+                need: need,
+                spare: spare
+        
+            }    
+                ) }
+          
 
-
+        
+    
+    
+    
 
    return(
     <div className="body"> 
@@ -55,6 +73,8 @@ function Bookingbox() {
     </div>
    )
 }
+
+
 
 
 
